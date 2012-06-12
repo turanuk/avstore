@@ -16,6 +16,15 @@ var StoreViewModel = function (productIdInput, productInfoInput, searchTermInput
     }
   });
 
+  self.searchTerm.subscribe(function (newValue) {
+    localStorage.searchTerm = newValue;
+    if (newValue) {
+      StoreHelpers.search(newValue, function (data) {
+        self.searchResults(data);
+      });
+    }
+  });
+
   self.updateProductData = function () {
     self.error('');
     StoreHelpers.updateProduct(self.productId(), function (data) {
@@ -52,10 +61,6 @@ var StoreViewModel = function (productIdInput, productInfoInput, searchTermInput
   self.search = function (term) {
     self.error('');
     self.searchTerm(term);
-    localStorage.searchTerm = term;
-    StoreHelpers.search(term, function (data) {
-      self.searchResults(data);
-    });
   }
 }
 
