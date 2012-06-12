@@ -2,3 +2,23 @@
 #Home .Home, #About .About {
   color: #ffffff;
 }
+
+.productDisplay, .searchDisplay, .searchResultsDisplay {
+  display: none;
+}
+
+.visible {
+  display: block;
+  visibility: visible;
+}
+
+.viewTitle {
+}
+
+.leftColumn, rightColumn {
+  float: left;
+}
+
+.leftColumn {
+  clear: both;
+}

@@ -23,8 +23,15 @@ var StoreViewModel = function (productIdInput, productInfoInput, searchTermInput
     });
   }
 
+  //UI Actions
+
   self.viewProduct = function (productIdInput) {
     self.productId(productIdInput);
+  }
+
+  self.backToSearch = function () {
+    self.error('');
+    self.searchTerm('');
   }
 
   self.backToSearchResults = function () {
@@ -53,28 +60,27 @@ var StoreViewModel = function (productIdInput, productInfoInput, searchTermInput
 }
 
 $(function () {
-  var productId = '';
   if (localStorage.productId) {
     //Displaying the product view - re-hydrate from the server first
     productId = localStorage.productId;
     StoreHelpers.updateProduct(productId, function (data) {
-      ko.applyBindings(new StoreViewModel(productId, data, null, null));
+      ko.applyBindings(new StoreViewModel(productId, data, localStorage.searchTerm, null));
     });
   } else if (localStorage.searchTerm) {
     //Displaying the search results view - re-hydrate from the server also
     StoreHelpers.search(localStorage.searchTerm, function (data) {
-      ko.applyBindings(new StoreViewModel(null, null, localStorage.searchTerm, data));
+      ko.applyBindings(new StoreViewModel('', null, localStorage.searchTerm, data));
     });
   } else {
     //Blank hyrdation, start from scratch
-    ko.applyBindings(new StoreViewModel(null, null, null, null));
+    ko.applyBindings(new StoreViewModel('', null, '', null));
   }
 });
 
 var StoreHelpers = {
   updateProduct: function (productIdInput, callback) {
-    $.getJSON('/endpoints/getproductinfo', { productId: productIdInput }, function (data) {
-      callback(data);;
+    $.getJSON('/endpoints/getproduct', { productId: productIdInput }, function (data) {
+      callback(data);
     });
   },
   search: function (searchTerm, callback) {

@@ -1,0 +1,8 @@
+﻿@{
+  Layout = null;
+  var input = Request["keyword"];
+  Response.AddHeader("Cache-Control", "no-cache");
+  var foo = new List<Product>();
+  foo.Add(new Product("My Socks", "25"));
+  Response.Write(Json.Encode(foo));
+}

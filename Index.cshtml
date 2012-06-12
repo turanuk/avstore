@@ -3,8 +3,40 @@
   Page.PageId = "Home";
 }
 @section scripts {
-<script src="~/Knockout/StoreViewModel.js"></script>
+  <script src="~/Knockout/StoreViewModel.js"></script>
+  <script src="~/Knockout/CustomBindings.js"></script>
 }
 
 <h1>Welcome to the avStore</h1>
 <p>AdventureWorks is proud to present a store built for your style</p>
+
+<div class="searchDisplay" data-bind="css: {visible: searchTerm() === ''}">
+  <input id ="searchInput" />
+  <a href="#" class="searchIcon icon48" data-bind="searchInput: $root"><span>Search</span></a>
+</div>
+
+<div class="searchResultsDisplay" data-bind="css: {visible: searchTerm() !== '' && productId() === ''}">
+  <div>Results for <span data-bind="text: searchTerm"></span></div>
+  <div class="actions">
+    <a href="#" class="backIcon icon48" data-bind="click: backToSearch"><span>Back to Search</span></a>
+  </div>
+  <ul data-bind="foreach: searchResults ">
+    <li>
+      <span data-bind="text: ProductName"></span>
+      <a href="#" data-bind="viewProduct: $root">Go</a>
+    </li>
+  </ul>
+</div>
+
+<div class="productDisplay" data-bind="css: {visible: productId() !== ''}">
+  <div class="viewTitle">Product</div>
+  <div class="actions">
+    <a href="#" class="backIcon icon48" data-bind="click: backToSearchResults"><span>Back to Results</span></a>
+  </div>
+  <div class="leftColumn">
+    <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Bmw_m5_s62_motor-terabass.jpg/250px-Bmw_m5_s62_motor-terabass.jpg" />
+  </div>
+  <div class="rightColumn" data-bind="with: productInfo">
+    <span data-bind="text: ProductName"></span>
+  </div>
+</div>
