@@ -13,6 +13,10 @@ var StoreViewModel = function (productIdInput, productInfoInput, searchTermInput
     //Get product information, otherwise we will render the search view
     if (newValue) {
       self.updateProductData(newValue);
+    } else {
+      StoreHelpers.search(newValue, function (data) {
+        self.searchResults(data);
+      });
     }
   });
 

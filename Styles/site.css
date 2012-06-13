@@ -1,3 +1,28 @@
+body {
+  font-family: 'Segoe UI';
+}
+
+ol, ul {
+  list-style: none;
+}
+
+a, a:hover, a:focus {
+  outline: none;
+}
+
+h1 {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 1.0em;
+  font-weight: normal;
+  line-height: 1.0em;
+  margin-bottom: 15px;
+  text-transform: lowercase;
+}
+
 /*Active Menu Item*/
 #Home .Home, #About .About {
   color: #ffffff;
@@ -7,12 +32,92 @@
   display: none;
 }
 
+.errorDisplay {
+  clear: both;
+  margin-top: 60px;
+  color: red;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 .visible {
   display: block;
   visibility: visible;
 }
 
 .viewTitle {
+  font-family: 'Segoe UI';
+  font-size: 1.7em;
+  margin-bottom: 15px;
+  margin-top: 7px;
+  text-transform: lowercase;
+}
+
+.icon32 {
+  display: block;
+  height: 32px;
+  width: 32px;
+}
+
+.icon48 {
+  display: block;
+  height: 48px;
+  width: 48px;
+}
+
+.backIcon {
+  background: url(../img/left_arrow.png);
+  margin-bottom: 7px;
+}
+
+  .backIcon > span {
+    color: Black;
+    display: block;
+    font-family: 'Segoe UI';
+    padding-left: 40px;
+    padding-top: 6px;
+    text-transform: uppercase;
+    width: 150px;
+  }
+
+  .backIcon:hover {
+    text-decoration: none;
+  }
+
+  .backIcon > span:hover {
+    color: #41bb0d;
+  }
+
+#searchInput {
+  float: left;
+}
+
+.searchIcon {
+  float: left;
+  margin-left: 12px;
+  margin-top: -13px;
+  background: url(../img/search.png);
+}
+
+.tagIcon {
+  background: url(../img/tag.png);
+  color: black;
+}
+
+.tagIcon > span {
+  display: block;
+  width: 100px;
+  padding-left: 40px;
+  padding-top: 5px;
+}
+
+  .tagIcon:hover {
+    text-decoration: none;
+    color: #41bb0d;
+  }
+
+.actions {
+  margin-bottom: 15px;
 }
 
 .leftColumn, rightColumn {
@@ -21,4 +126,9 @@
 
 .leftColumn {
   clear: both;
+  width: 300px;
+}
+
+.productThumb {
+  width: 280px;
 }
